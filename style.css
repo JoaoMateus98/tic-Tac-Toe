@@ -32,8 +32,47 @@ body {
 }
 
 .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     box-sizing: border-box;
     border: 5px inset #8a5e52;
     width: 100%;
     flex-grow: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Start Game Screen */
+form {
+    margin-top: 10rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 20rem 20rem;
+    grid-template-rows: 4rem 6rem;
+}
+
+.player1-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 2;
+}
+
+.player2-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 3;
+}
+
+.start-button {
+    margin: auto;
+    grid-column: 1 / 3;
+    height: 2rem;
+    width: 10rem;
 }
