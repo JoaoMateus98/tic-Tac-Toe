@@ -46,7 +46,7 @@ body {
 }
 
 /* Start Game Screen */
-form {
+form > ul {
     margin-top: 10rem;
     display: grid;
     justify-content: center;
