@@ -14,32 +14,32 @@
             <h1>Tic Tac Toe</h1>
         </div>
         <div class="main-container">
-            <div class="start-game-container  hidden">
+            <div class="start-game-container">
                 <form class="form">
                     <ul>
                         <li class="player1-container">
                             <label for="player1">Player 1</label>
-                            <input type="text" name="player1" id="player1">
+                            <input type="text" name="player1" id="x">
                         </li>
                         <li class="player2-container">
                             <label for="player2">Player 2</label>
-                            <input type="text" name="player2" id="player2">
+                            <input type="text" name="player2" id="o">
                         </li>
                         <button type="button" class="start-button">Start</button>
                     </ul>  
                 </form>
             </div>
-            <div class="game-container">
+            <div class="game-container hidden">
                 <div class="board">
-                    <button id="top-left"></button>
-                    <button id="top-mid"></button>
-                    <button id="top-right"></button>
-                    <button id="mid-left"></button>
-                    <button id="mid-mid"></button>
-                    <button id="mid-right"></button>
-                    <button id="low-left"></button>
-                    <button id="low-mid"></button>
-                    <button id="low-right"></button>
+                    <button class="board-cell" id="top-left"></button>
+                    <button class="board-cell" id="top-mid"></button>
+                    <button class="board-cell" id="top-right"></button>
+                    <button class="board-cell" id="mid-left"></button>
+                    <button class="board-cell" id="mid-mid"></button>
+                    <button class="board-cell" id="mid-right"></button>
+                    <button class="board-cell" id="low-left"></button>
+                    <button class="board-cell" id="low-mid"></button>
+                    <button class="board-cell" id="low-right"></button>
                 </div>
             </div>
         </div>
