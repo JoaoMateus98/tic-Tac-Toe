@@ -17,21 +17,22 @@ const DomGrabber = (() => {
 })();
 
 const GameBoard = (() => {
-    DomGrabber.startButton.addEventListener('click', () => {
+})();
+
+const DisplayController = (() => {
+    DomGrabber.startButton.addEventListener('click', () => { // start game
         let formData = new FormData(DomGrabber.form);
         playerOne = Player(formData.get('player1'));
         playerTwo = Player(formData.get('player2'));
         DomGrabber.startGameContainer.classList.add('hidden');
         DomGrabber.gameContainer.classList.remove('hidden');
+        DomGrabber.form.reset();
     });
-})();
-
-const DisplayController = (() => {
     
 })();
 
 const Player = (name) => {
-    let playerName = name;
+    const playerName = name;
     return {
         name: playerName
     }
