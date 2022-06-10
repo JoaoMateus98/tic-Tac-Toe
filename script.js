@@ -1,4 +1,3 @@
-const log = (...args) => console.log(...args);
 let playerOne;
 let playerTwo;
 let gameBoard = [['top-left', 'top-mid', 'top-right'],
@@ -9,13 +8,14 @@ let currentPlayer = 'X';
 const DomGrabber = (() => {
     const startGameContainer = document.querySelector('.start-game-container');
     const winnerMessage = document.querySelector('.winner-p');
-    const winningPlayer = document.querySelector('.winning-player')
+    const winningPlayer = document.querySelector('.winning-player');
+    const tie = document.querySelector('.tie');
     const gameContainer = document.querySelector('.game-container');
     const startButton = document.querySelector('.start-button');
     const boardCells = document.querySelectorAll('.board-cell');
     const form = document.querySelector('form');
-    const endGameBlocker = document.querySelector('.end-game')
-    const restartButton = document.querySelector('.restart-button')
+    const endGameBlocker = document.querySelector('.end-game');
+    const restartButton = document.querySelector('.restart-button');
 
     return {
         startButton,
@@ -26,7 +26,8 @@ const DomGrabber = (() => {
         endGameBlocker,
         winnerMessage,
         winningPlayer,
-        restartButton
+        restartButton,
+        tie
     }
 })();
 
@@ -60,7 +61,6 @@ const GameBoard = (() => {
             });
         });
     });
-    
 })();
 
 const checkWinner = () => {
@@ -75,7 +75,26 @@ const checkWinner = () => {
         gameBoard[1][1] === gameBoard[1][0] && gameBoard[1][1] === gameBoard[1][2]) {
         return currentPlayer;
     }
-    return;
+
+    function checkTie () {
+        let counter = 0;
+        gameBoard.forEach((row) => {
+            row.forEach((column) => {
+                if (column === 'X' || column === 'O' || column === '') {
+                    counter ++;
+                }
+            })
+        });
+        if (counter === 9) {
+            DomGrabber.tie.classList.remove('hidden');
+            DomGrabber.restartButton.classList.remove('hidden');
+            DomGrabber.endGameBlocker.classList.remove('hidden');
+        }
+    }
+
+    checkTie();
+    
+    return ;
 };
 
 const DisplayController = (() => {
@@ -102,6 +121,7 @@ const DisplayController = (() => {
     DomGrabber.restartButton.addEventListener('click', () => { // restart game
         DomGrabber.startGameContainer.classList.remove('hidden');
         DomGrabber.endGameBlocker.classList.add('hidden');
+        DomGrabber.tie.classList.add('hidden');
         DomGrabber.winnerMessage.classList.remove('hidden');
         DomGrabber.restartButton.classList.remove('hidden');
         DomGrabber.gameContainer.classList.add('hidden');
