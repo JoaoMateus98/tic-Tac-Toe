@@ -34,14 +34,28 @@ const GameBoard = (() => {
                     currentColumn++;
                     if (cell.id === column) {
                         gameBoard[currentRow][currentColumn] = currentPlayer;
-                        log(gameBoard)
-                        currentPlayer = (currentPlayer === 'x') ? '0' : 'x';
+                        let winner = checkWinner();
+                        if (winner === currentPlayer) {
+                        } else {
+                          currentPlayer = (currentPlayer === 'x') ? 'o' : 'x';  
+                        }
                     }
                 });
             });
         });
     });
+    
 })();
+
+const checkWinner = () => {
+    if (gameBoard[0][0] === gameBoard[0][1] && gameBoard[0][1] === gameBoard[0][2] || gameBoard[0][0] === gameBoard[1][0] && gameBoard[1][0] === gameBoard[2][0] || gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]){
+        return currentPlayer;
+    }
+    if (gameBoard[1][1] === gameBoard[0][1] && gameBoard[1][1] === gameBoard[2][1] || gameBoard[1][1] === gameBoard[1][0] && gameBoard[1][1] === gameBoard[1][2]) {
+        return currentPlayer;
+    }
+    return;
+};
 
 const DisplayController = (() => {
     DomGrabber.startButton.addEventListener('click', () => { // start game
@@ -55,7 +69,8 @@ const DisplayController = (() => {
 })();
 
 const Player = (name) => {
+    const getName = name
     return {
-        name
+        getName
     }
 }
