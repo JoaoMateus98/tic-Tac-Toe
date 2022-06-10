@@ -160,6 +160,11 @@ input {
     border-radius: 1rem;
 }
 
+.board-cell {
+    font-weight: 600;
+    font-family: 'Varela Round', sans-serif;
+}
+
 /* board borders */
 .board > button {
     font-size: 5rem;
