@@ -4,7 +4,7 @@ let playerTwo;
 let gameBoard = [['top-left', 'top-mid', 'top-right'],
                  ['mid-left', 'mid-mid', 'mid-right'],
                  ['low-left', 'low-mid', 'low-right']];
-let currentPlayer = 'x';
+let currentPlayer = 'X';
 
 const DomGrabber = (() => {
     const startGameContainer = document.querySelector('.start-game-container');
@@ -12,13 +12,15 @@ const DomGrabber = (() => {
     const startButton = document.querySelector('.start-button');
     const boardCells = document.querySelectorAll('.board-cell');
     const form = document.querySelector('form');
+    const endGameBlocker = document.querySelector('.end-game')
 
     return {
         startButton,
         form,
         startGameContainer,
         gameContainer,
-        boardCells
+        boardCells,
+        endGameBlocker
     }
 })();
 
@@ -34,10 +36,11 @@ const GameBoard = (() => {
                     currentColumn++;
                     if (cell.id === column) {
                         gameBoard[currentRow][currentColumn] = currentPlayer;
-                        let winner = checkWinner();
-                        if (winner === currentPlayer) {
+                        DisplayController.updateBoard(column);
+                        if (checkWinner() === currentPlayer) {
+                            DomGrabber.endGameBlocker.classList.remove('hidden');
                         } else {
-                          currentPlayer = (currentPlayer === 'x') ? 'o' : 'x';  
+                            currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
                         }
                     }
                 });
@@ -58,14 +61,27 @@ const checkWinner = () => {
 };
 
 const DisplayController = (() => {
+    const updateBoard = (currentCell) => {
+        DomGrabber.boardCells.forEach((cell) => {
+            if (cell.id === currentCell) {
+                cell.innerHTML = currentPlayer;
+            }
+        });
+    }
+
     DomGrabber.startButton.addEventListener('click', () => { // start game
         let formData = new FormData(DomGrabber.form);
         playerOne = Player(formData.get('player1'));
         playerTwo = Player(formData.get('player2'));
         DomGrabber.startGameContainer.classList.add('hidden');
+        DomGrabber.endGameBlocker.classList.add('hidden');
         DomGrabber.gameContainer.classList.remove('hidden');
         DomGrabber.form.reset();
     });
+
+    return {
+        updateBoard
+    }
 })();
 
 const Player = (name) => {
