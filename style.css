@@ -88,8 +88,11 @@ input {
     cursor: pointer;
     margin: auto;
     grid-column: 1 / 3;
-    height: 2rem;
-    width: 10rem;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: rgb(37, 60, 66);
+    height: 3rem;
+    width: 12rem;
     border: 3px outset #3e6c79;
     border-radius: 1rem;
 }
@@ -126,6 +129,29 @@ input {
     color: white;
     font-size: 3rem;
     font-weight: 900;
+}
+
+.restart-container {
+    bottom: 2rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 36rem;
+}
+
+.restart-button {
+    color: rgb(37, 60, 66);
+    font-weight: 900;
+    font-size: 1.5rem;
+
+    background-color: var(--primary-color);
+    cursor: pointer;
+    margin: auto;
+    height: 3.5rem;
+    width: 15rem;
+    border: 3px outset #3e6c79;
+    border-radius: 1rem;
 }
 
 /* board borders */

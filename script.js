@@ -15,6 +15,7 @@ const DomGrabber = (() => {
     const boardCells = document.querySelectorAll('.board-cell');
     const form = document.querySelector('form');
     const endGameBlocker = document.querySelector('.end-game')
+    const restartButton = document.querySelector('.restart-button')
 
     return {
         startButton,
@@ -24,7 +25,8 @@ const DomGrabber = (() => {
         boardCells,
         endGameBlocker,
         winnerMessage,
-        winningPlayer
+        winningPlayer,
+        restartButton
     }
 })();
 
@@ -47,6 +49,7 @@ const GameBoard = (() => {
                             } else {
                                 DomGrabber.winningPlayer.textContent = playerTwo.getName;
                             }
+                            DomGrabber.restartButton.classList.remove('hidden');
                             DomGrabber.winnerMessage.classList.remove('hidden');
                             DomGrabber.endGameBlocker.classList.remove('hidden');
                         } else {
@@ -91,6 +94,7 @@ const DisplayController = (() => {
         DomGrabber.startGameContainer.classList.add('hidden');
         DomGrabber.endGameBlocker.classList.add('hidden');
         DomGrabber.winnerMessage.classList.add('hidden');
+        DomGrabber.restartButton.classList.add('hidden');
         DomGrabber.gameContainer.classList.remove('hidden');
         DomGrabber.form.reset();
     });
