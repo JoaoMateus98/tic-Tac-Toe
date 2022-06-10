@@ -7,7 +7,6 @@ body {
     font-family: 'Poppins', sans-serif;
     --primary-color: rgb(95,146,160);
     --secondary-color: #A06D5F;
-
     --test-border: 2px solid red;
 }
 
@@ -29,7 +28,8 @@ body {
     width: 100%;
     background-color: var(--primary-color);
     border: 5px solid #3e6c79;
-    color: white;
+    font-weight: 900;
+    color: rgb(37, 60, 66);
 }
 
 .main-container {
@@ -50,8 +50,9 @@ body {
 /* Start Game Screen */
 form > ul {
     height: 20rem;
-    color: white;
-    font-size: 1.5rem;
+    color: rgb(37, 60, 66);
+    font-size: 2rem;
+    font-weight: 900;
     margin-top: 15rem;
     display: grid;
     justify-content: center;
@@ -61,11 +62,15 @@ form > ul {
 }
 
 input {
-    font-size: 1.2rem;
+    width: 17rem;
+    font-size: 1.5rem;
+    font-weight: 900;
     border: 3px outset #3e6c79;
+    background-color: rgba(0, 0, 0, 0.05);
     padding-left: 10px;
     border-radius: 15px;
 }
+
 
 .player1-container {
     display: flex;
@@ -126,7 +131,8 @@ input {
 }
 
 .winner-message > p {
-    color: white;
+    color: rgb(37, 60, 66);
+    font-weight: bolder;
     font-size: 3rem;
     font-weight: 900;
 }
@@ -142,8 +148,8 @@ input {
 
 .restart-button {
     color: rgb(37, 60, 66);
-    font-weight: 900;
-    font-size: 1.5rem;
+    font-weight: bolder;
+    font-size: 1.6rem;
 
     background-color: var(--primary-color);
     cursor: pointer;

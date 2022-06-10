@@ -99,6 +99,25 @@ const DisplayController = (() => {
         DomGrabber.form.reset();
     });
 
+    DomGrabber.restartButton.addEventListener('click', () => { // restart game
+        DomGrabber.startGameContainer.classList.remove('hidden');
+        DomGrabber.endGameBlocker.classList.add('hidden');
+        DomGrabber.winnerMessage.classList.remove('hidden');
+        DomGrabber.restartButton.classList.remove('hidden');
+        DomGrabber.gameContainer.classList.add('hidden');
+
+        resetBoard();
+    });
+
+    function resetBoard() {
+        gameBoard = [['top-left', 'top-mid', 'top-right'],
+                     ['mid-left', 'mid-mid', 'mid-right'],
+                     ['low-left', 'low-mid', 'low-right']];
+        DomGrabber.boardCells.forEach((cell) => {
+            cell.innerHTML = '';
+       });
+    }
+
     return {
         updateBoard
     }
