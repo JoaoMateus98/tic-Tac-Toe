@@ -27,7 +27,7 @@ body {
     height: 6rem;
     width: 100%;
     background-color: var(--primary-color);
-    border: 5px solid #3e6c79;
+    border: 10px solid #3e6c79;
     font-weight: 900;
     color: rgb(37, 60, 66);
 }
@@ -38,7 +38,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     box-sizing: border-box;
-    border: 5px inset #8a5e52;
+    border: 10px inset #8a5e52;
     width: 100%;
     flex-grow: 1;
 }
@@ -65,7 +65,7 @@ input {
     width: 17rem;
     font-size: 1.5rem;
     font-weight: 900;
-    border: 3px outset #3e6c79;
+    border: 4px outset #3e6c79;
     background-color: rgba(0, 0, 0, 0.05);
     padding-left: 10px;
     border-radius: 15px;
@@ -98,7 +98,7 @@ input {
     color: rgb(37, 60, 66);
     height: 3rem;
     width: 12rem;
-    border: 3px outset #3e6c79;
+    border: 4px outset #3e6c79;
     border-radius: 1rem;
 }
 
