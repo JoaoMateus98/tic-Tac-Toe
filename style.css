@@ -96,6 +96,22 @@ form > ul {
     width: 36rem;
     height: 36rem;
 }
+
+.winner-message {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36rem;
+    top: 0;
+}
+
+.winner-message > p {
+    color: white;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
 /* board borders */
 .board > button {
     font-size: 5rem;

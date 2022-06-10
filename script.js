@@ -8,6 +8,8 @@ let currentPlayer = 'X';
 
 const DomGrabber = (() => {
     const startGameContainer = document.querySelector('.start-game-container');
+    const winnerMessage = document.querySelector('.winner-p');
+    const winningPlayer = document.querySelector('.winning-player')
     const gameContainer = document.querySelector('.game-container');
     const startButton = document.querySelector('.start-button');
     const boardCells = document.querySelectorAll('.board-cell');
@@ -20,7 +22,9 @@ const DomGrabber = (() => {
         startGameContainer,
         gameContainer,
         boardCells,
-        endGameBlocker
+        endGameBlocker,
+        winnerMessage,
+        winningPlayer
     }
 })();
 
@@ -38,6 +42,12 @@ const GameBoard = (() => {
                         gameBoard[currentRow][currentColumn] = currentPlayer;
                         DisplayController.updateBoard(column);
                         if (checkWinner() === currentPlayer) {
+                            if (currentPlayer === 'X') {
+                                DomGrabber.winningPlayer.textContent = playerOne.getName;
+                            } else {
+                                DomGrabber.winningPlayer.textContent = playerTwo.getName;
+                            }
+                            DomGrabber.winnerMessage.classList.remove('hidden');
                             DomGrabber.endGameBlocker.classList.remove('hidden');
                         } else {
                             currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
@@ -51,10 +61,15 @@ const GameBoard = (() => {
 })();
 
 const checkWinner = () => {
-    if (gameBoard[0][0] === gameBoard[0][1] && gameBoard[0][1] === gameBoard[0][2] || gameBoard[0][0] === gameBoard[1][0] && gameBoard[1][0] === gameBoard[2][0] || gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2]){
+    if (gameBoard[0][0] === gameBoard[0][1] && gameBoard[0][1] === gameBoard[0][2] ||
+        gameBoard[0][0] === gameBoard[1][0] && gameBoard[1][0] === gameBoard[2][0] ||
+        gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2] ||
+        gameBoard[2][2] === gameBoard[1][2] && gameBoard[1][2] === gameBoard[0][2] ||
+        gameBoard[2][2] === gameBoard[2][0] && gameBoard[2][0] === gameBoard[2][1]){
         return currentPlayer;
     }
-    if (gameBoard[1][1] === gameBoard[0][1] && gameBoard[1][1] === gameBoard[2][1] || gameBoard[1][1] === gameBoard[1][0] && gameBoard[1][1] === gameBoard[1][2]) {
+    if (gameBoard[1][1] === gameBoard[0][1] && gameBoard[1][1] === gameBoard[2][1] ||
+        gameBoard[1][1] === gameBoard[1][0] && gameBoard[1][1] === gameBoard[1][2]) {
         return currentPlayer;
     }
     return;
@@ -75,6 +90,7 @@ const DisplayController = (() => {
         playerTwo = Player(formData.get('player2'));
         DomGrabber.startGameContainer.classList.add('hidden');
         DomGrabber.endGameBlocker.classList.add('hidden');
+        DomGrabber.winnerMessage.classList.add('hidden');
         DomGrabber.gameContainer.classList.remove('hidden');
         DomGrabber.form.reset();
     });
